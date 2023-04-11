@@ -8,7 +8,7 @@ const Contactlist = () => {
 
   useEffect(() => {
     dispatch(fetchContacts());
-  }, []);
+  }, [dispatch]);
 
   const contacts = useSelector(state => {
     const filteredContacts = state.contacts.contacts.items.filter(contact =>
@@ -19,10 +19,10 @@ const Contactlist = () => {
   return (
     <div className={css.contacts_wrapper}>
       <ul className={css.contact_list}>
-        {contacts.map(({ id, name, number }) => (
+        {contacts.map(({ id, name, phone }) => (
           <li key={id} className={css.contact_list_item}>
             <p>
-              {name}: {number}
+              {name}: {phone}
             </p>
             <button
               type="button"

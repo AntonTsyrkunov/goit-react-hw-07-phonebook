@@ -17,7 +17,7 @@ const contactSlice = createSlice({
       },
       [fetchContacts.fulfilled](state, action) {
         state.isLoading = false;
-        state.error = null;
+        state.error = null;        
         state.contacts.items = action.payload;
       },
       [fetchContacts.rejected](state, action) {
@@ -30,7 +30,11 @@ const contactSlice = createSlice({
       [addContact.fulfilled](state, action) {
         state.isLoading = false;
         state.error = null;
-        state.contacts.items.push(action.payload);
+        if (state.contacts.items.some(contact => contact.name === action.payload.name)) {
+          alert('This contact is already exist');
+          return
+        }
+        state.contacts.items.push(action.payload);              
       },
       [addContact.rejected](state, action) {
         state.isLoading = false;

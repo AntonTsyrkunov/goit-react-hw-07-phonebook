@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import Phonebook from './Phonebook/Phonebook';
 import Contactlist from './Contacts/Contactlist';
 import Filter from './Contacts/Filter';
